@@ -60,15 +60,16 @@
  	}
  }
  $team=new matchDetails();
- $result3=$team->teamDetails($_GET['match_id']);
+ $result3=$team->teamDetails(42);
  $bat=new matchDetails();
- $result1=$bat->batDetails($_GET['match_id']);
+ $result1=$bat->batDetails(42);
  $ball=new matchDetails();
- $result2=$ball->ballDetails($_GET['match_id']);
+ $result2=$ball->ballDetails(42);
  $bal=new matchDetails();
- $result4=$bal->balDetails($_GET['match_id']);
+ $result4=$bal->balDetails(42);
  $ba=new matchDetails();
- $result5=$ba->baDetails($_GET['match_id']);
+ $result5=$ba->baDetails(42);
+
  //$_SESSION['match_id']=$_GET['match_id'];
  //echo $_SESSION['match_id'];
 ?>
@@ -87,12 +88,8 @@
 	</header>
 	<nav>
 	   <ul>
-			<li><a href="index.php">Home</a></li>
+			<li><a href="index.php">Admin</a></li>
 			<li><a href="liveScores.php" target="_blank">Live scores</a></li>
-			<li><a href="#">Schedule</a></li>
-			<li><a href="#">News</a></li>
-			<li><a href="#">About</a></li>
-
 	   </ul>
 	</nav>
 	<section>
@@ -634,5 +631,26 @@
 		</table>
 	</section>
 
+</body>
+</html>
+
+<html>  
+<body>  
+   <form action="sonika.php" method="post" enctype="multipart/form-data">  
+   <div align="center">    
+      <input type="checkbox" name="techno[]" value="wide"> Wide   
+      <input type="checkbox" name="techno[]" value="wicket">  Wicket 
+      <input type="checkbox" name="techno[]" value="noball">  NoBall 
+      <input type="checkbox" name="techno[]" value="Byes">  Byes <br>
+
+	  <input type="submit" value="0" name="0"> 
+      <input type="submit" value="1" name="1">  
+      <input type="submit" value="2" name="2">
+      <input type="submit" value="3" name="3">  
+      <input type="submit" value="4" name="4">    
+      <input type="submit" value="5" name="5">  
+      <input type="submit" value="6" name="6">  
+</div>  
+</form>  
 </body>
 </html>
