@@ -1,4 +1,5 @@
-<?php include'init.php';?>
+<?php include'init.php';
+?>
 <?php
  class matchDetails
  {
@@ -59,16 +60,17 @@
  		return $result=DB::getConnection()->select($sql);
  	}
  }
+ $sid=Session::get('mid');
  $team=new matchDetails();
- $result3=$team->teamDetails($_GET['match_id']);
+ $result3=$team->teamDetails($sid);
  $bat=new matchDetails();
- $result1=$bat->batDetails($_GET['match_id']);
+ $result1=$bat->batDetails($sid);
  $ball=new matchDetails();
- $result2=$ball->ballDetails($_GET['match_id']);
+ $result2=$ball->ballDetails($sid);
  $bal=new matchDetails();
- $result4=$bal->balDetails($_GET['match_id']);
+ $result4=$bal->balDetails($sid);
  $ba=new matchDetails();
- $result5=$ba->baDetails($_GET['match_id']);
+ $result5=$ba->baDetails($sid);
  //$_SESSION['match_id']=$_GET['match_id'];
  //echo $_SESSION['match_id'];
 ?>
@@ -82,19 +84,6 @@
 </head>
 <body>
 <div>
-	<header>
-		<h1>Live Scores</h1>
-	</header>
-	<nav>
-	   <ul>
-			<li><a href="index.php">Home</a></li>
-			<li><a href="liveScores.php" target="_blank">Live scores</a></li>
-			<li><a href="#">Schedule</a></li>
-			<li><a href="#">News</a></li>
-			<li><a href="#">About</a></li>
-
-	   </ul>
-	</nav>
 	<section>
 		<?php
 		$teamAid;
