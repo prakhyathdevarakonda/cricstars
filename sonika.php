@@ -1,67 +1,86 @@
+<html>  
+<body>  
+   <form action="" method="post" enctype="multipart/form-data" align="center">   
+      <input type="checkbox" name="techno[]" value="wide">  Wide  
+      <input type="checkbox" name="techno[]" value="wicket"> Wicket 
+      <input type="checkbox" name="techno[]" value="noball">  No Ball 
+      <input type="checkbox" name="techno[]" value="Byes">  Byes  <br><br>
 
-<?php
-    	if(empty($_POST['techno']))
-        {
-            if(isset($_POST['0']))  
-            { 
-                $val=$_POST['0'] ;
-            } 
-            if(isset($_POST['1']))  
-            { 
-                $val=$_POST['1'] ;
-            } 
-            else if(isset($_POST['2']))
-            { 
-                $val=$_POST['2'] ;
-                
-            } 
-            else if(isset($_POST['3']))
-            { 
-                $val=$_POST['3'] ;
-                
-            } 
-            else if(isset($_POST['4']))
-            { 
-                $val=$_POST['4'] ;
-               
-            } 
-            else if(isset($_POST['5']))
-            { 
-                $val=$_POST['5'] ;
-                
-            } 
-            else if(isset($_POST['6']))
-            { 
-                $val=$_POST['6'] ;
-                
-            } 
-            
-        }
-?>
+      <input type="submit" value="0" name="0"> 
+      <input type="submit" value="1" name="1">  
+      <input type="submit" value="2" name="2">
+      <input type="submit" value="3" name="3">  <br><br>
+      <input type="submit" value="4" name="4">    
+      <input type="submit" value="5" name="5">  
+      <input type="submit" value="6" name="6">    
+    </form>  
+</body>  
+</html>  
+
 <?php
 include'init.php';
-
+if($_SERVER['REQUEST_METHOD']=='POST')
+{
+    if(empty($_POST['techno']))
+    {
+        if(isset($_POST['0']))  
+        { 
+            $val=$_POST['0'] ;
+        } 
+        if(isset($_POST['1']))  
+        { 
+            $val=$_POST['1'] ;
+        } 
+        else if(isset($_POST['2']))
+        { 
+            $val=$_POST['2'] ;
+            
+        } 
+        else if(isset($_POST['3']))
+        { 
+            $val=$_POST['3'] ;
+            
+        } 
+        else if(isset($_POST['4']))
+        { 
+            $val=$_POST['4'] ;
+           
+        } 
+        else if(isset($_POST['5']))
+        { 
+            $val=$_POST['5'] ;
+            
+        } 
+        else if(isset($_POST['6']))
+        { 
+            $val=$_POST['6'] ;
+            
+        } 
+    }
 class batRuns
 {
-    private $runs;
-    private $statusid;
-    private $nonstriker;
-    private $tossId;
-    public function runs($runs)
-    {
-        $this->runs=$runs;
-        $sql="SELECT match_id FROM m_atch WHERE adminid=17";
-        $result=DB::getConnection()->select($sql);
-        if($result)
-        {
-              foreach ($result as $value) 
-              {
-                   $this->tossId=95;
-                   $this->matchid=42;
-              }
-        }       
+	private $runs;
+	private $adminid;
+	private $tossId;
+	private $statusid;
+	private $nonstriker;
 
-        $sql="SELECT status_id FROM status WHERE stricking_role=1  AND match_id=$this->matchid AND toss=$this->tossId";
+	public function runs($runs)
+	{
+	   $this->runs=$runs;
+	   $this->adminid=Session::get('id');
+	   $sql="SELECT * FROM m_atch WHERE adminid=$this->adminid";
+       $result=DB::getConnection()->select($sql);
+       if($result)
+       {
+       	  foreach ($result as $value) 
+       	  {
+       	  	 $this->tossId=$value['toss'];
+       	  	 $this->matchid=$value['match_id'];
+       	  }
+       }
+
+       $sql="SELECT status_id FROM status WHERE stricking_role=1  AND match_id=$this->matchid AND toss=$this->tossId";
        $result=DB::getConnection()->select($sql);
        if($result)
        {
@@ -158,10 +177,11 @@ class batRuns
            $sql="UPDATE  status  SET bowlruns=$bowlerrun,bowled_overs=$bowlerball WHERE status_id=$this->statusid";
            $result=DB::getConnection()->update($sql);
        }
-       header("Location:details.php");
-    }
- 
+       header("Location:gamesituation.php");
+       
+	}
 }
 $run=new batRuns();
 $run->runs($val);
+}
 ?>

@@ -1,4 +1,5 @@
-<?php include'init.php';?>
+<?php include'init.php';
+?>
 <?php
 class activeMatch
 {
@@ -25,20 +26,18 @@ $result1=$active->activeTeam();
 	</header>
 	<nav>
 	   <ul>
-			<li><a href="index.php">Home</a></li>
-			<li><a href="liveScores.php" target="_blank">Live scores</a></li>
-			<li><a href="#">Schedule</a></li>
-			<li><a href="#">News</a></li>
-			<li><a href="#">About</a></li>
-
+      <li><a href="index.php">Home</a></li>
+			<li><a href="liveScores.php" target="_self">Live scores</a></li>
 	   </ul>
 	</nav>
 	<section>
   	<?php
       foreach ($result1 as $value) 
       {
+       
       	 $matchid=$value['match_id'];
       	 $tossid=$value['toss'];
+         
       	 $teamAid=$value['team_Aid'];
       	 $teamBid=$value['team_Bid'];
       	 $teamAname=$value['team_Aname'];
@@ -50,7 +49,8 @@ $result1=$active->activeTeam();
       	 $extrawicket=0;
          $overs=0;
       	 echo '<div class="match">';
-      	 echo "<h1><a href='details.php ?match_id=" . $matchid . "'>" . $teamAname . " Vs " . $teamBname . "</a></h1>";
+      	 echo "<h1><a href='main.php ?match_id=" . $matchid . "&toss=" . $tossid . "'>" . $teamAname . " Vs " . $teamBname . "</a></h1>";
+         
       	 if($tossid==$teamAid)
       	 {
       	 	echo "<p>".$teamAname." ";
