@@ -1,4 +1,5 @@
-<?php include'init.php';?>
+<?php include'init.php';
+?>
 <?php
  class matchDetails
  {
@@ -59,17 +60,17 @@
  		return $result=DB::getConnection()->select($sql);
  	}
  }
+ $sid=Session::get('mid');
  $team=new matchDetails();
- $result3=$team->teamDetails(42);
+ $result3=$team->teamDetails($sid);
  $bat=new matchDetails();
- $result1=$bat->batDetails(42);
+ $result1=$bat->batDetails($sid);
  $ball=new matchDetails();
- $result2=$ball->ballDetails(42);
+ $result2=$ball->ballDetails($sid);
  $bal=new matchDetails();
- $result4=$bal->balDetails(42);
+ $result4=$bal->balDetails($sid);
  $ba=new matchDetails();
- $result5=$ba->baDetails(42);
-
+ $result5=$ba->baDetails($sid);
  //$_SESSION['match_id']=$_GET['match_id'];
  //echo $_SESSION['match_id'];
 ?>
@@ -83,15 +84,6 @@
 </head>
 <body>
 <div>
-	<header>
-		<h1>Live Scores</h1>
-	</header>
-	<nav>
-	   <ul>
-			<li><a href="index.php">Admin</a></li>
-			<li><a href="liveScores.php" target="_blank">Live scores</a></li>
-	   </ul>
-	</nav>
 	<section>
 		<?php
 		$teamAid;
@@ -631,26 +623,5 @@
 		</table>
 	</section>
 
-</body>
-</html>
-
-<html>  
-<body>  
-   <form action="sonika.php" method="post" enctype="multipart/form-data">  
-   <div align="center">    
-      <input type="checkbox" name="techno[]" value="wide"> Wide   
-      <input type="checkbox" name="techno[]" value="wicket">  Wicket 
-      <input type="checkbox" name="techno[]" value="noball">  NoBall 
-      <input type="checkbox" name="techno[]" value="Byes">  Byes <br>
-
-	  <input type="submit" value="0" name="0"> 
-      <input type="submit" value="1" name="1">  
-      <input type="submit" value="2" name="2">
-      <input type="submit" value="3" name="3">  
-      <input type="submit" value="4" name="4">    
-      <input type="submit" value="5" name="5">  
-      <input type="submit" value="6" name="6">  
-</div>  
-</form>  
 </body>
 </html>

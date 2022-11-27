@@ -1,6 +1,7 @@
 <?php
 
-
+ob_start();
+session_start();
 define('DB_HOSTNAME', 'localhost');
 define('DB_USERNAME', 'root');
 define('DB_PASSWORD', '');
