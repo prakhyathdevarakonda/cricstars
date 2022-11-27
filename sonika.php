@@ -71,7 +71,6 @@ class batRuns
 
 	public function runs($runs)
 	{
-        
 	   $this->runs=$runs;
 	   $this->adminid=Session::get('id');
 	   $sql="SELECT * FROM m_atch WHERE adminid=$this->adminid";
@@ -156,7 +155,6 @@ class batRuns
               $result=DB::getConnection()->update($sql);
            }
        }
-       
        $sql="SELECT status_id FROM status WHERE stricking_role=1  AND match_id=$this->matchid AND toss!=$this->tossId";
        $result=DB::getConnection()->select($sql);
        if($result)
