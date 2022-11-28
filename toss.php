@@ -50,8 +50,21 @@ class tossDetails
 		$sql="INSERT INTO m_atch (team_Aid,team_Bid,team_Aname,team_Bname,toss,overs,isActive)
 		      VALUE ('$this->teamAid','$this->teamBid','$this->teamAname','$this->teamBname','$this->tossid','$this->overs',1)";
 		$result=DB::getConnection()->insert($sql);
+			while(1)//generation of random pass
+			{
+				$length = 4 ;
+				$characters = '01234567898765432109';
+				$charactersLength = strlen($characters);
+				$username = '';
+				for ($i = 0; $i < $length; $i++) 
+					$username .= $characters[rand(0, $charactersLength - 1)];
+				
+				$sql="SELECT username from admin where username='$username'";
+				$result=DB::getConnection()->select($sql);
+				if(!$result)
+				break;
+			}
 
-			$username="qwerty";//generation of random pass
 			$sql = "INSERT INTO admin(username,isPresent)VALUES('$username',1)";
    			$result = DB::getConnection()->insert($sql);
 
@@ -71,7 +84,7 @@ class tossDetails
 			$result=DB::getConnection()->update($sql);
 
 
-			header("Location:main.php? match_id=$matchid ");
+			header("Location:resume.php? match_id=$matchid ");
 	}
 }
  

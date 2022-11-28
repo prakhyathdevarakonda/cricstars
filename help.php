@@ -1,11 +1,18 @@
 <?php
-include'init.php';
-$username="tree";
-$sql="SELECT * FROM admin WHERE username=$username";
-$result=DB::getConnection()->select($sql);
-var_dump($result);
-$id=20;
-$sql="SELECT match_id FROM m_atch WHERE adminid=$id";
-$result=DB::getConnection()->select($sql);
-var_dump($result);
+include 'init.php';
+while(1){
+	$length = 4 ;
+    $characters = '01234567898765432109';
+    $charactersLength = strlen($characters);
+    $username = '';
+    for ($i = 0; $i < $length; $i++) 
+    {
+        $username .= $characters[rand(0, $charactersLength - 1)];
+    }
+    echo $randomString;
+    $sql="SELECT username from admin where username='$username'";
+    $result=DB::getConnection()->select($sql);
+    if(!$result)
+    break;
+}
 ?>

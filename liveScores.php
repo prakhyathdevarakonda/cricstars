@@ -118,7 +118,7 @@ $result1=$active->activeTeam();
             }
             
          }
-         echo "<h1><a href='main.php ?match_id=" . $matchid . "&toss=" . $tossid . "'> Resume</a></h1>";
+         echo "<h1><a href='resume.php ?match_id=" . $matchid . "'> Resume</a></h1>";
       	 echo '</div>';
       }
 
