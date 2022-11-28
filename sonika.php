@@ -2,7 +2,7 @@
 <body>  
    <form action="" method="post" enctype="multipart/form-data" align="center">   
       <input type="checkbox" name="techno[]" value="wide">  Wide  
-      <input type="checkbox" name="techno[]" value="wicket"> Wicket 
+      <input type="checkbox" name="techno[]" value="out"> Wicket 
       <input type="checkbox" name="techno[]" value="noball">  No Ball 
       <input type="checkbox" name="techno[]" value="Byes">  Byes  <br><br>
 
@@ -60,7 +60,8 @@ if($_SERVER['REQUEST_METHOD']=='POST')
         $val=$_POST['6'] ;
         
     } 
-    
+
+
 class batRuns
 {
 	private $runs;
@@ -187,5 +188,10 @@ class batRuns
 }
 $run=new batRuns();
 $run->runs($val);
+if($extra=="out")
+{
+    header("Location:out.php");
 }
+}
+
 ?>
