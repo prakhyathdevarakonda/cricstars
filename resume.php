@@ -4,16 +4,22 @@
 if ($_SERVER['REQUEST_METHOD'] == 'POST')
 {
 	$username = $_POST['username'];
+	$id=$_GET['match_id'];
+    
 
-	$sql = "SELECT * FROM admin WHERE username='$username' ";
+	$sql = "SELECT * FROM m_atch WHERE admin_name='$username' and match_id=$id";
 	$result = DB::getConnection()->selectFirstRow($sql);
-    session::set('id',$result['id']);
+
+	
     
     if ($result)
-        header("Location:main.php");
-
-    $id=$_GET['match_id'];
-    Session::set('mid',$id);
+	{
+		Session::set('mid',$id);
+    	session::set('id',$result['adminid']);
+		header("Location:main.php");
+	}
+        
+    
 
 
 }

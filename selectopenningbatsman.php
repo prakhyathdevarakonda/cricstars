@@ -82,7 +82,7 @@ $result1=$selectplayer1->selectPlayer();
 <script type="text/javascript" src="resources/js/view.js"></script>
 
 </head>
-<body id="main_body" >
+<body id="main_body" style="background:white">
 	
 	<img id="top" src="top.png" alt="">
 	<div id="form_container">

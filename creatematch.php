@@ -41,7 +41,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Team Details</title>
-<link rel="stylesheet" type="text/css" href="css/view.css" media="all">
+<link rel="stylesheet" type="text/css" href="resources/css/view.css" media="all">
 <script type="text/javascript" src="resources/js/view.js"></script>
 <script>
 function validateForm() {

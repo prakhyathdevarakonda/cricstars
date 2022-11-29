@@ -11,6 +11,7 @@ class activeMatch
 }
 $active=new activeMatch();
 $result1=$active->activeTeam();
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -33,6 +34,8 @@ $result1=$active->activeTeam();
 	</nav>
 	<section>
   	<?php
+    if(!$result1);
+    else{
       foreach ($result1 as $value) 
       {
        
@@ -118,10 +121,16 @@ $result1=$active->activeTeam();
             }
             
          }
-         echo "<h1><a href='resume.php ?match_id=" . $matchid . "'> Resume</a></h1>";
+         $sql = "SELECT * FROM m_atch WHERE match_id=$matchid";
+         $result = DB::getConnection()->selectFirstRow($sql);
+           if (!$result['isFinished'])
+          {
+            echo "<h1><a href='resume.php ?match_id=" . $matchid . "'> Resume</a></h1>";
+          }
+         
       	 echo '</div>';
       }
-
+    }
     ?>
 
   	<div style="clear: both;"></div>

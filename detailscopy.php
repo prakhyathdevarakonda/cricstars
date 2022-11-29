@@ -87,8 +87,9 @@
 	</header>
 	<nav>
 	   <ul>
-			<li><a href="matchindex.php">Home</a></li>
+			<li><a href="index.php">Home</a></li>
 			<li><a href="liveScores.php" target="_self">Live scores</a></li>
+			<li><a href="creatematch.php" target="_top">Create Match</a></li>
 	   </ul>
 	</nav>
 	<section>
