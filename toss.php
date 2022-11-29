@@ -50,21 +50,8 @@ class tossDetails
 		$sql="INSERT INTO m_atch (team_Aid,team_Bid,team_Aname,team_Bname,toss,overs,isActive)
 		      VALUE ('$this->teamAid','$this->teamBid','$this->teamAname','$this->teamBname','$this->tossid','$this->overs',1)";
 		$result=DB::getConnection()->insert($sql);
-			while(1)//generation of random pass
-			{
-				$length = 4 ;
-				$characters = '01234567898765432109';
-				$charactersLength = strlen($characters);
-				$username = '';
-				for ($i = 0; $i < $length; $i++) 
-					$username .= $characters[rand(0, $charactersLength - 1)];
-				
-				$sql="SELECT username from admin where username='$username'";
-				$result=DB::getConnection()->select($sql);
-				if(!$result)
-				break;
-			}
 
+			$username=session::get('code');
 			$sql = "INSERT INTO admin(username,isPresent)VALUES('$username',1)";
    			$result = DB::getConnection()->insert($sql);
 
@@ -114,6 +101,27 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
 		<h1><a>Toss Details</a></h1>
 		<form id="index2" class="appnitro"  method="post" action="">
 					<div class="form_description">
+			<h2>
+				Match Code:
+				<?php
+							while(1)//generation of random pass
+							{
+								$length = 4 ;
+								$characters = '01234567898765432109';
+								$charactersLength = strlen($characters);
+								$username = '';
+								for ($i = 0; $i < $length; $i++) 
+									$username .= $characters[rand(0, $charactersLength - 1)];
+								
+								$sql="SELECT username from admin where username='$username'";
+								$result=DB::getConnection()->select($sql);
+								if(!$result)
+								break;
+							}
+							echo $username;
+							session::set('code',$username)
+				?>
+			</h2>
 			<h2>Toss Details</h2>
 			<p>Please enter the proper info below:</p>
 		</div>						

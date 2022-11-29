@@ -9,9 +9,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 
 	$sql = "SELECT * FROM m_atch WHERE admin_name='$username' and match_id=$id";
 	$result = DB::getConnection()->selectFirstRow($sql);
-
-	
-    
     if ($result)
 	{
 		Session::set('mid',$id);

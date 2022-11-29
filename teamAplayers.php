@@ -95,32 +95,32 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
 		</li>		<li id="li_6" >
 		<label class="description" for="p_name6">Player 6 Name </label>
 		<div>
-			<input id="p_name6" name="p_name6" class="element text medium" type="text" maxlength="255" value="" required/> 
+			<input id="p_name6" name="p_name6" class="element text medium" type="text" maxlength="255" value="" /> 
 		</div> 
 		</li>		<li id="li_7" >
 		<label class="description" for="p_name7">Player 7 Name </label>
 		<div>
-			<input id="p_name7" name="p_name7" class="element text medium" type="text" maxlength="255" value="" required/> 
+			<input id="p_name7" name="p_name7" class="element text medium" type="text" maxlength="255" value="" /> 
 		</div> 
 		</li>		<li id="li_8" >
 		<label class="description" for="p_name8">Player 8 Name </label>
 		<div>
-			<input id="p_name8" name="p_name8" class="element text medium" type="text" maxlength="255" value="" required/> 
+			<input id="p_name8" name="p_name8" class="element text medium" type="text" maxlength="255" value="" /> 
 		</div> 
 		</li>		<li id="li_9" >
 		<label class="description" for="p_name9">Player 9 Name </label>
 		<div>
-			<input id="p_name9" name="p_name9" class="element text medium" type="text" maxlength="255" value="" required/> 
+			<input id="p_name9" name="p_name9" class="element text medium" type="text" maxlength="255" value="" /> 
 		</div> 
 		</li>		<li id="li_10" >
 		<label class="description" for="p_name10">Player 10 Name </label>
 		<div>
-			<input id="p_name10" name="p_name10" class="element text medium" type="text" maxlength="255" value="" required/> 
+			<input id="p_name10" name="p_name10" class="element text medium" type="text" maxlength="255" value="" /> 
 		</div> 
 		</li>		<li id="li_11" >
 		<label class="description" for="p_name11">Player 11 Name </label>
 		<div>
-			<input id="p_name11" name="p_name11" class="element text medium" type="text" maxlength="255" value="" required/> 
+			<input id="p_name11" name="p_name11" class="element text medium" type="text" maxlength="255" value="" /> 
 		</div> 
 		</li>		<li id="li_12" >
 		<label class="description" for="p_name12">Substitute Player Name </label>
