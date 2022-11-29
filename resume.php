@@ -13,6 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 	{
 		Session::set('mid',$id);
     	session::set('id',$result['adminid']);
+		session::set('codeb',$result['admin_name']);
 		header("Location:main.php");
 	}
         

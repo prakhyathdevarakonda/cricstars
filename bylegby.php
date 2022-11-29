@@ -1,6 +1,5 @@
 <?php include'init.php';?>
 <?php
-$val=$_GET['val'];
 class nobyRuns
 {
 	private $runs;
@@ -9,7 +8,6 @@ class nobyRuns
 	private $statusid;
 	private $nonstriker;
   private $playedball;
-  private $batrun;
 
 	public function runs($runs)
 	{
@@ -41,17 +39,17 @@ class nobyRuns
     $result=DB::getConnection()->select($sql);
     if ($result)
     {
-      $noball;
+      $ball;
       $bowlerrun;
       $extrarun;
       foreach ($result as $value) 
       {
-        $bowlerrun=$this->runs+$value["bowlruns"]+1;
-        $noball=1+$value["noball"];
-        $extrarun=1+$value["extra"];
+        $bowlerrun=$this->runs+$value["bowlruns"];
+        $ball=1+$value["bowled_overs"];
+        $extrarun=$this->runs+$value["extra"];
       }
       // echo "in bowler ".$this->statusid." ".$bowlerball." ".$bowlerrun;
-      $sql="UPDATE  status  SET bowlruns=$bowlerrun,extra=$extrarun,noball=$noball WHERE status_id=$this->statusid";
+      $sql="UPDATE  status  SET bowlruns=$bowlerrun,extra=$extrarun,bowled_overs=$ball WHERE status_id=$this->statusid";
       $result=DB::getConnection()->update($sql);
     }
     
@@ -59,30 +57,13 @@ class nobyRuns
     $result=DB::getConnection()->select($sql);
     if($result)
     {
-      $six;
-      $four;
       foreach ($result as $value) 
       {
         $this->statusid=$value['status_id'];
         $this->playedball=1+$value['played_ball'];
-        $this->batrun=$this->runs+$value["bat_run"]+1;
-        $six=1+$value['hitted_sixes'];
-        $four=1+$value['hitted_fours'];
       }
-      $sql="UPDATE status SET bat_run=$this->batrun-1,played_ball=$this->playedball WHERE status_id=$this->statusid";
+      $sql="UPDATE status SET played_ball=$this->playedball WHERE status_id=$this->statusid";
       $result=DB::getConnection()->update($sql);
-    //  echo $four." ".$six." ".$this->runs;
-
-      if($this->runs==4)
-      {
-        $sql="UPDATE status SET hitted_fours=$four WHERE status_id=$this->statusid";
-        $result=DB::getConnection()->update($sql);
-      }
-      if($this->runs==6)
-      {
-        $sql="UPDATE status SET hitted_sixes=$six WHERE status_id=$this->statusid";
-        $result=DB::getConnection()->update($sql);
-      }
     }
     $sql="SELECT status_id FROM status WHERE stricking_role=2  AND match_id=$this->matchid AND toss=$this->tossId";
     $result=DB::getConnection()->select($sql);
@@ -95,7 +76,7 @@ class nobyRuns
     }  
    //echo $this->statusid." xxx  ".$this->nonstriker;
     // if batted runs is odd then position change of batsman
-    if(($this->runs%2)==0)
+    if(($this->runs%2)==1)
     {
       $sql="UPDATE  status  SET stricking_role=2 WHERE status_id=$this->statusid";
       $result=DB::getConnection()->update($sql);

@@ -78,7 +78,7 @@
 <html>
 <head>
 	<meta http-equiv="refresh" content="5" />
-	<title> Live Scores </title>
+	<title> CRICSTARS</title>
 	<link   rel="stylesheet" href="css/style.css" type="text/css"> </link>
 	
 </head>

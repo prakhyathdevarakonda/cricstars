@@ -7,7 +7,7 @@
 <body>
 <div>
 	<header>
-		<h1>Live Scores</h1>
+		<h1>CRICKSTARS</h1>
 	</header>
 	<nav>
 	   <ul>

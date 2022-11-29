@@ -1,5 +1,6 @@
 <?php include'init.php';?>
 <?php
+$val=$_GET['val'];
 class wideRuns
 {
 	private $runs;
@@ -85,5 +86,5 @@ class wideRuns
 	}
 }
 $run=new wideRuns();
-$run->runs($_SESSION["element_1"]);
+$run->runs($val);
 ?>

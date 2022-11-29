@@ -1,4 +1,6 @@
-<?php include'init.php';?>
+<?php include'init.php';
+$sql="DELETE FROM m_atch WHERE player_name='' ";
+$result=DB::getConnection()->delete($sql);?>
 <?php
 
 class tossDetails
