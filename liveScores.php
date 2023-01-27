@@ -11,6 +11,7 @@ class activeMatch
 }
 $active=new activeMatch();
 $result1=$active->activeTeam();
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -28,10 +29,13 @@ $result1=$active->activeTeam();
 	   <ul>
       <li><a href="index.php">Home</a></li>
 			<li><a href="liveScores.php" target="_self">Live scores</a></li>
+      <li><a href="creatematch.php" target="_top">Create Match</a></li>
 	   </ul>
 	</nav>
 	<section>
   	<?php
+    if(!$result1);
+    else{
       foreach ($result1 as $value) 
       {
        
@@ -49,8 +53,7 @@ $result1=$active->activeTeam();
       	 $extrawicket=0;
          $overs=0;
       	 echo '<div class="match">';
-      	 echo "<h1><a href='main.php ?match_id=" . $matchid . "&toss=" . $tossid . "'>" . $teamAname . " Vs " . $teamBname . "</a></h1>";
-         
+      	 echo "<h1><a href='detailscopy.php ?match_id=" . $matchid . "'>" . $teamAname . " Vs " . $teamBname . "</a></h1>";         
       	 if($tossid==$teamAid)
       	 {
       	 	echo "<p>".$teamAname." ";
@@ -118,10 +121,16 @@ $result1=$active->activeTeam();
             }
             
          }
-
+         $sql = "SELECT * FROM m_atch WHERE match_id=$matchid";
+         $result = DB::getConnection()->selectFirstRow($sql);
+           if (!$result['isFinished'])
+          {
+            echo "<h1><a href='resume.php ?match_id=" . $matchid . "'> Resume</a></h1>";
+          }
+         
       	 echo '</div>';
       }
-
+    }
     ?>
 
   	<div style="clear: both;"></div>

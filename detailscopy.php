@@ -1,5 +1,4 @@
-<?php include'init.php';
-?>
+<?php include'init.php';?>
 <?php
  class matchDetails
  {
@@ -60,17 +59,16 @@
  		return $result=DB::getConnection()->select($sql);
  	}
  }
- $sid=Session::get('mid');
  $team=new matchDetails();
- $result3=$team->teamDetails($sid);
+ $result3=$team->teamDetails($_GET['match_id']);
  $bat=new matchDetails();
- $result1=$bat->batDetails($sid);
+ $result1=$bat->batDetails($_GET['match_id']);
  $ball=new matchDetails();
- $result2=$ball->ballDetails($sid);
+ $result2=$ball->ballDetails($_GET['match_id']);
  $bal=new matchDetails();
- $result4=$bal->balDetails($sid);
+ $result4=$bal->balDetails($_GET['match_id']);
  $ba=new matchDetails();
- $result5=$ba->baDetails($sid);
+ $result5=$ba->baDetails($_GET['match_id']);
  //$_SESSION['match_id']=$_GET['match_id'];
  //echo $_SESSION['match_id'];
 ?>
@@ -78,12 +76,22 @@
 <html>
 <head>
 	<meta http-equiv="refresh" content="5" />
-	<title> CRICSTARS</title>
+	<title> Live Scores </title>
 	<link   rel="stylesheet" href="css/style.css" type="text/css"> </link>
 	
 </head>
 <body>
 <div>
+	<header>
+		<h1>CRICKSTARS</h1>
+	</header>
+	<nav>
+	   <ul>
+			<li><a href="index.php">Home</a></li>
+			<li><a href="liveScores.php" target="_self">Live scores</a></li>
+			<li><a href="creatematch.php" target="_top">Create Match</a></li>
+	   </ul>
+	</nav>
 	<section>
 		<?php
 		$teamAid;
